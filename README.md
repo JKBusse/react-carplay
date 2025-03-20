@@ -13,6 +13,9 @@ carplay application.
  - Configurable key bindings
  - Ability to choose microphone device and camera device
 
+
+
+
 ## Installation
 The easiest method is to install via the setup-pi script, this handles usb permissions and also creates and autostart script
 to launch the app on start up.
