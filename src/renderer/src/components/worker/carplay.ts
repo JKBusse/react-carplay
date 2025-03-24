@@ -25,6 +25,7 @@ const handleMessage = (message: CarplayMessage) => {
       console.log(payload.payload.media.MediaArtistName)
       console.log(payload.payload.media.MediaAPPName)
     }
+    
     postMessage(message)
   } else {
     postMessage(message)
