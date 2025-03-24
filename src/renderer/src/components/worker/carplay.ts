@@ -13,6 +13,7 @@ let config: Partial<DongleConfig> | null = null
 
 const handleMessage = (message: CarplayMessage) => {
   const { type, message: payload } = message
+  console.log(message)
   if (type === 'video') {
     postMessage(message, [payload.data.buffer])
   } else if (type === 'audio' && payload.data) {
@@ -27,7 +28,6 @@ const handleMessage = (message: CarplayMessage) => {
     postMessage(message)
   } else {
     postMessage(message)
-    console.log(message)
   }
 }
 
