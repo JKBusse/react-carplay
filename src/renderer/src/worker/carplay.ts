@@ -31,6 +31,7 @@ const handleMessage = (message: CarplayMessage) => {
   }
 }
 
+
 onmessage = async (event: MessageEvent<Command>) => {
   switch (event.data.type) {
     case 'start':

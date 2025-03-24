@@ -17,8 +17,17 @@ const handleMessage = (message: CarplayMessage) => {
     postMessage(message, [payload.data.buffer])
   } else if (type === 'audio' && payload.data) {
     postMessage(message, [payload.data.buffer])
+  } else if (type === 'media') {
+    if (payload.payload?.media?.MediaSongName) {
+      console.log(payload.payload.media.MediaSongName)
+      console.log(payload.payload.media.MediaAlbumName)
+      console.log(payload.payload.media.MediaArtistName)
+      console.log(payload.payload.media.MediaAPPName)
+    }
+    postMessage(message)
   } else {
     postMessage(message)
+    console.log(message)
   }
 }
 
