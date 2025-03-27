@@ -11,6 +11,9 @@ import {Canbus} from "./Canbus"
 import { ExtraConfig, KeyBindings } from "./Globals";
 // import CarplayNode, {DEFAULT_CONFIG, CarplayMessage} from "node-carplay/node";
 
+app.commandLine.appendSwitch('log-file', '/var/tmp/react-carplay-renderer.log');
+app.commandLine.appendSwitch('enable-logging');
+
 let mainWindow: BrowserWindow
 const appPath: string = app.getPath('userData')
 const configPath: string = appPath + '/config.json'

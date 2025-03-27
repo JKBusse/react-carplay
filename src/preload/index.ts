@@ -3,6 +3,10 @@ import { electronAPI } from '@electron-toolkit/preload'
 import { ExtraConfig} from "../main/Globals";
 import { Stream } from "socketmost/dist/modules/Messages";
 
+app.commandLine.appendSwitch('log-file', '/var/tmp/react-carplay-renderer.log');
+app.commandLine.appendSwitch('enable-logging');
+
+
 type ApiCallback = (event: IpcRendererEvent, ...args: any[]) => void
 
 export interface Api {
