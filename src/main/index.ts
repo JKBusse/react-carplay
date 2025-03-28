@@ -13,6 +13,8 @@ import { ExtraConfig, KeyBindings } from "./Globals";
 
 app.commandLine.appendSwitch('log-file', '/var/tmp/react-carplay-renderer.log');
 app.commandLine.appendSwitch('enable-logging');
+app.commandLine.appendSwitch('v', '10');
+app.commandLine.appendSwitch('log-level', '10');
 
 let mainWindow: BrowserWindow
 const appPath: string = app.getPath('userData')
