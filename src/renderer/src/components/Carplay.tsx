@@ -104,7 +104,7 @@ function Carplay({ receivingVideo, setReceivingVideo, settings, command, command
   // subscribe to worker messages
   useEffect(() => {
     carplayWorker.onmessage = (ev) => {
-      console.log(ev)
+      console.log(carplayWorker.onmessage)
       const { type } = ev.data
       switch (type) {
         case 'plugged':
