@@ -15,7 +15,7 @@ let config: Partial<DongleConfig> | null = null
 
 const handleMessage = (message: CarplayMessage) => {
   const { type, message: payload } = message
-  console.log(message)
+  console.warn(message)
   console.log("test")
   //console.log("Message type: ", type, " Message: ", message)
   if (type === 'video') {
