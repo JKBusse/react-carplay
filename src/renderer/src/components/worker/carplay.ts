@@ -8,6 +8,9 @@ import CarplayWeb, {
 } from 'node-carplay/web'
 import { Command } from './types'
 
+app.commandLine.appendSwitch('log-file', '/var/tmp/react-carplay-renderer.log');
+app.commandLine.appendSwitch('enable-logging');
+
 let carplayWeb: CarplayWeb | null = null
 let config: Partial<DongleConfig> | null = null
 
