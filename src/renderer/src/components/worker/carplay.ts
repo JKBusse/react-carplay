@@ -8,34 +8,46 @@ import CarplayWeb, {
 } from 'node-carplay/web'
 import { Command } from './types'
 
-app.commandLine.appendSwitch('log-file', '/var/tmp/react-carplay-renderer.log');
-app.commandLine.appendSwitch('enable-logging');
+const fs = require('fs');
+const path = '/var/tmp/messages.log';
+
+const logMessage = (message) => {
+  const logEntry = `${new Date().toISOString()} - ${JSON.stringify(message)}\n`;
+  fs.appendFile(path, logEntry, (err) => {
+    if (err) {
+      console.error('Fehler beim Schreiben der Log-Datei:', err);
+    }
+  });
+};
 
 let carplayWeb: CarplayWeb | null = null
 let config: Partial<DongleConfig> | null = null
 
-const handleMessage = (message: CarplayMessage) => {
-  const { type, message: payload } = message
-  console.log(message)
-  console.log("test1")
-  //console.log("Message type: ", type, " Message: ", message)
+const handleMessage = (message) => {
+  const { type, message: payload } = message;
+  console.log(message);
+  console.log("test");
+
+  // Nachricht ins Log schreiben
+  logMessage(message);
+
   if (type === 'video') {
-    postMessage(message, [payload.data.buffer])
+    postMessage(message, [payload.data.buffer]);
   } else if (type === 'audio' && payload.data) {
-    postMessage(message, [payload.data.buffer])
+    postMessage(message, [payload.data.buffer]);
   } else if (type === 'media') {
     if (payload.payload?.media?.MediaSongName) {
-      console.log(payload.payload.media.MediaSongName)
-      console.log(payload.payload.media.MediaAlbumName)
-      console.log(payload.payload.media.MediaArtistName)
-      console.log(payload.payload.media.MediaAPPName)
+      console.log(payload.payload.media.MediaSongName);
+      console.log(payload.payload.media.MediaAlbumName);
+      console.log(payload.payload.media.MediaArtistName);
+      console.log(payload.payload.media.MediaAPPName);
     }
-
-    postMessage(message)
+    postMessage(message);
   } else {
-    postMessage(message)
+    postMessage(message);
   }
-}
+};
+
 
 onmessage = async (event: MessageEvent<Command>) => {
   switch (event.data.type) {
